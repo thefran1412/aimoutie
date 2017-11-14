@@ -1,33 +1,16 @@
 const express = require('express')
-const next = require('next')
 
-const dev = process.env.NODE_ENV !== 'production'
-const app = next({ dev })
-const handle = app.getRequestHandler()
+const server = express()
 
-const apiRoute = require('router/api/index.js')
+/* MIDDLEWARES */
+const useless = require('./middlewares/useless.js')
 
-app.prepare()
-.then(() => {
-  const server = express()
-  server.use((req, res, next) => {
-    console.log('came trough')
-    next()
-  })
-  server.use('/static', express.static('public'))
+server.use(useless)
 
-  server.use('/api', )
+/* ROUTES */
+const api = require('./router/api/index.js')
 
-  server.get('*', (req, res) => {
-    return handle(req, res)
-  })
+server.use('/static', express.static('public'))
+server.use('/api', api)
 
-  server.listen(3000, (err) => {
-    if (err) throw err
-    console.log('> Ready on http://localhost:3000')
-  })
-})
-.catch((ex) => {
-  console.error(ex.stack)
-  process.exit(1)
-})
+module.exports = server
