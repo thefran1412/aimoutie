@@ -1,0 +1,26 @@
+{
+  "name": "scapree",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "server": "node server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thefran1412/scapree.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thefran1412/scapree/issues"
+  },
+  "homepage": "https://github.com/thefran1412/scapree#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "next": "^4.1.4",
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1"
+  }
+}
