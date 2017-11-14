@@ -1,7 +1,7 @@
 {
   "name": "scapree",
   "version": "1.0.0",
-  "description": "",
+  "description": "Scape Reality",
   "main": "index.js",
   "scripts": {
     "dev": "next",
@@ -19,6 +19,7 @@
   "homepage": "https://github.com/thefran1412/scapree#readme",
   "dependencies": {
     "express": "^4.16.2",
+    "mongoose": "^4.13.2",
     "next": "^4.1.4",
     "react": "^16.1.1",
     "react-dom": "^16.1.1"
