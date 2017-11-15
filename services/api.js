@@ -12,4 +12,9 @@ function getData (url, callback) {
 // function deleteData () {
 // }
 
-export {getData}
+function getRooms (filter, callback) {
+  axios.get('/api/rooms')
+    .then(callback)
+}
+
+export {getData, getRooms}
