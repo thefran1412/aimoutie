@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next",
     "start": "set NODE_ENV=production && node index.js",
-    "try": "set NODE_ENV=production && nodemon index.js"
+    "server": "set NODE_ENV=production && nodemon -w index.js index.js"
   },
   "repository": {
     "type": "git",
@@ -28,7 +28,7 @@
     "react-dom": "^16.1.1"
   },
   "nodemonConfig": {
-    "ignore": [".next/*"],
+    "ignore": ["../scapree/*", ".next/*", "node_modules/*"],
     "delay": "2500"
   }
 }
