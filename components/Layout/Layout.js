@@ -9,20 +9,18 @@ export default class extends Component {
       this.props.page = 'Undefinied'
     }
     return (
-      <html lang='en'>
+      <div>
         <Head>
           <meta charSet='UTF-8' />
           <title>{this.props.page}</title>
           <link href='/static/css/default.css' rel='stylesheet' />
         </Head>
-        <body>
-          <div>
-            <Header />
-            <h1>{this.props.page}</h1>
-            {this.props.children}
-          </div>
-        </body>
-      </html>
+        <div>
+          <Header />
+          <h1>{this.props.page}</h1>
+          {this.props.children}
+        </div>
+      </div>
     )
   }
 }
