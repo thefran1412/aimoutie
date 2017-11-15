@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 let bcrypt = require('bcryptjs')
 const Schema = mongoose.Schema
+const {generateToken} = require('../services/token.js')
 
 // types of user: normal, admin, company
 
@@ -58,10 +59,6 @@ const comparePassword = (candidatePassword, hash, callback) => {
   })
 }
 
-const generateToken = (user, callback) => {
-  
-}
-
 module.exports.logIn = (username, password, callback) => {
   getUserByUsername(username, (err, user) => {
     if (err) throw err
@@ -71,8 +68,15 @@ module.exports.logIn = (username, password, callback) => {
       comparePassword(password, user.password, (err, isMatch) => {
         if (err) throw err
         if (isMatch) {
-
-          callback(err, {success: true, user})
+          const newUser = {
+            _id: user._id,
+            username: user.username,
+            email: user.email,
+            name: user.name,
+            userType: user.userType
+          }
+          const token = generateToken(newUser)
+          callback(err, {success: true, token})
         } else {
           callback(err, {success: false, message: 'incorrect password'})
         }

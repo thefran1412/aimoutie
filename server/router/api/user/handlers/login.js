@@ -8,7 +8,8 @@ function login (req, res) {
     if (!data.success) {
       res.status(500).json(data)
     } else {
-      res.status(200).json(data)
+      req.session.token = data.token
+      res.status(200).json(data.success)
     }
   })
 }

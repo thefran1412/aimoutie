@@ -1,7 +1,8 @@
-const jwt = require('')
-module.exports.generateToken = (info, callback) => {
+const jwt = require('jsonwebtoken')
+
+module.exports.generateToken = (user, callback) => {
   const token = jwt.sign({
-    data: info
+    user
   }, 'secretword')
   return token
 }
