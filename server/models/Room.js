@@ -26,6 +26,10 @@ var RoomSchema = new Schema({
   price: Number,
   languages: Array,
   visible: Boolean,
+  review: [{
+    type: Schema.ObjectId,
+    ref: 'Review'
+  }],
   created: Date
 })
 
