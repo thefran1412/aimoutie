@@ -42,18 +42,41 @@ module.exports.register = (newUser, callback) => {
   })
 }
 
-module.exports.getUserByUsername = (username, callback) => {
-  var query = {username: username}
-  User.findOne(query, callback)
-}
-
 module.exports.getUserById = (id, callback) => {
   User.findById(id, callback)
 }
 
-module.exports.comparePassword = (candidatePassword, hash, callback) => {
+const getUserByUsername = (username, callback) => {
+  var query = {username: username}
+  User.findOne(query, callback)
+}
+
+const comparePassword = (candidatePassword, hash, callback) => {
   bcrypt.compare(candidatePassword, hash, (err, isMatch) => {
     if (err) throw err
     callback(null, isMatch)
+  })
+}
+
+const generateToken = (user, callback) => {
+  
+}
+
+module.exports.logIn = (username, password, callback) => {
+  getUserByUsername(username, (err, user) => {
+    if (err) throw err
+    if (!user) {
+      callback(err, {success: false, message: 'incorrect user'})
+    } else {
+      comparePassword(password, user.password, (err, isMatch) => {
+        if (err) throw err
+        if (isMatch) {
+
+          callback(err, {success: true, user})
+        } else {
+          callback(err, {success: false, message: 'incorrect password'})
+        }
+      })
+    }
   })
 }
