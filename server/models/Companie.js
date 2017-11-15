@@ -1,17 +1,26 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-// types of user: normal, admin, company
-
 var CompanieSchema = new Schema({
-  username: String,
-  email: String,
-  password: String,
   name: String,
-  surname: String,
-  token: String,
-  userType: String,
-  friends: []
+  contact: {
+    email: String,
+    phone: Number
+  },
+  desc: String,
+  profileImg: String,
+  coverImg: String,
+  tags: Array,
+  location: {
+    lat: Number,
+    long: Number,
+    address: String,
+    code: String,
+    city: String,
+    country: String
+  },
+  visible: Boolean,
+  created: Date
 })
 
 module.exports = mongoose.model('Companie', CompanieSchema)

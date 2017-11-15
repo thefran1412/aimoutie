@@ -10,7 +10,7 @@ var RoomSchema = new Schema({
     type: String,
     required: true
   },
-  company: {
+  companie: {
     type: Schema.ObjectId,
     ref: 'Companie'
   },
@@ -25,14 +25,6 @@ var RoomSchema = new Schema({
   difficulty: Number,
   price: Number,
   languages: Array,
-  location: {
-    lat: Number,
-    long: Number,
-    address: String,
-    code: String,
-    city: String,
-    country: String
-  },
   visible: Boolean,
   created: Date
 })

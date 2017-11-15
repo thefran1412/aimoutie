@@ -1,20 +1,18 @@
-const Room = require('../../../models/Room.js')
+const Companie = require('../../../../models/Companie.js')
 
 module.exports = function (req, res) {
   const params = req.body
-
-  const newRoom = new Room({
+  const newCompanie = new Companie({
     name: params.name || 'undefined',
+    contact: {
+      email: params.mail,
+      phone: +params.phone
+    },
+    desc: params.desc,
     profileImg: params.profileImg || 'default.png',
-    desc: params.desc || 'No description',
-    duration: +params.duration || 60,
-    minAge: +params.minAge || 5,
-    minPeople: +params.minPeople || 2,
-    maxPeople: +params.maxPeople || 6,
-    difficulty: +params.difficulty || 0,
-    price: +params.price || 10,
+    coverImg: params.coverImg || 'default.png',
+    tags: ['architecture', 'scary'],
     visible: params.visible || true,
-    languages: ['ca', 'es'],
     location: {
       lat: 41.408225,
       long: 2.153634,
@@ -26,7 +24,7 @@ module.exports = function (req, res) {
     created: +new Date() + 7 * 24 * 60 * 60 * 1000
   })
 
-  newRoom.save()
-    .then(tasks => res.json(tasks))
+  newCompanie.save()
+    .then(companie => res.json(companie))
     .catch(err => console.log(err))
 }

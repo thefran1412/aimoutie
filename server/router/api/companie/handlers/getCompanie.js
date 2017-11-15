@@ -1,7 +1,8 @@
-const Room = require('../../../models/Room.js')
+const Companie = require('../../../../models/Companie.js')
 
 module.exports = function (req, res) {
-  Room.find({visible: true})
+  const {id} = req.params
+  Companie.findById(id)
     .then(tasks => res.json(tasks))
     .catch(err => console.log(err))
 }

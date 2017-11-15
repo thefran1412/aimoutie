@@ -1,19 +1,15 @@
 const express = require('express')
 let bodyParser = require('body-parser')
 
-const router = express.Router()
-const getRooms = require('./handlers/getRooms')
-const getRoom = require('./handlers/getRoom')
-const addRoom = require('./handlers/addRoom')
+const app = express()
 
-router.use(bodyParser.urlencoded({ extended: false }))
-router.use(bodyParser.json())
+const room = require('./room')
+const companie = require('./companie')
 
-router.get('/rooms', getRooms)
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
-router.post('/room', addRoom)
+app.use(room)
+app.use(companie)
 
-router.route('/room/:id')
-  .get(getRoom)
-
-module.exports = router
+module.exports = app

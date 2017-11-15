@@ -8,7 +8,7 @@ const useless = require('./middlewares/useless.js')
 server.use(useless)
 
 /* ROUTES */
-const api = require('./router/api/index.js')
+const api = require('./router/api')
 
 server.use('/static', express.static('public'))
 server.use('/api', api)
