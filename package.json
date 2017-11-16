@@ -30,6 +30,7 @@
     "express-messages": "*",
     "express-session": "*",
     "express-validator": "*",
+    "isomorphic-unfetch": "^2.0.0",
     "jsonwebtoken": "^8.1.0",
     "mongodb": "*",
     "mongoose": "^4.13.2",

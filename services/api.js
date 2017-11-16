@@ -17,4 +17,9 @@ function getRooms (filter, callback) {
     .then(callback)
 }
 
-export {getData, getRooms}
+function getRoom (id, filter, callback) {
+  axios.get(`/api/room/${id}`)
+    .then(callback)
+}
+
+export {getData, getRooms, getRoom}

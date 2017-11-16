@@ -1,7 +1,7 @@
 import {Component} from 'react'
 import Layout from '../components/Layout/Layout'
 
-export default class extends Component {
+export default class Login extends Component {
   render () {
     return (
       <Layout page='login'>

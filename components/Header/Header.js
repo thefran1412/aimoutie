@@ -2,12 +2,13 @@ import {Component} from 'react'
 import Head from 'next/head'
 import UserControl from '../UserControl/UserControl'
 import HeaderForm from '../HeaderForm/HeaderForm.js'
+import Link from 'next/link'
 
 export default class extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      logged: true
+      logged: false
     }
   }
 
@@ -19,7 +20,9 @@ export default class extends Component {
         </Head>
         <nav>
           <div className='headerLogo'>
-            <h1>Scapree</h1>
+            <Link href='/'>
+              <a><h1>Scapree</h1></a>
+            </Link>
           </div>
           <HeaderForm />
           {

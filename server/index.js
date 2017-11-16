@@ -1,14 +1,8 @@
 const express = require('express')
-const path = require('path')
-const cookieParser = require('cookie-parser')
-const exphbs = require('express-handlebars')
-const LocalStrategy = require('passport-local').Strategy
-const mongo = require('mongodb')
-const mongoose = require('mongoose')
-
 const server = express()
 
 /* MIDDLEWARES */
+
 const passport = require('passport')
 const bodyParser = require('body-parser')
 const expressSession = require('./middlewares/expressSession.js')
@@ -25,9 +19,13 @@ server.use(expressValidator)
 server.use(globalVars)
 
 /* ROUTES */
+
 const api = require('./router/api')
+// const front = require('./router/front')
 
 server.use('/static', express.static('public'))
 server.use('/api', api)
+
+// server.use('/', front)
 
 module.exports = server

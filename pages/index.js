@@ -1,26 +1,19 @@
 import {Component} from 'react'
 import Layout from '../components/Layout/Layout'
-import {getRooms} from '../services/api.js'
 import PrintRooms from '../components/PrintRooms/PrintRooms'
+import fetch from 'isomorphic-unfetch'
 
-export default class extends Component {
+export default class Index extends Component {
   constructor (props) {
     super(props)
     this.state = {
       rooms: []
     }
-
-    this.rooms = this.rooms.bind(this)
-  }
-  rooms () {
-    getRooms({}, (data) => {
-      this.setState({
-        rooms: data.data
-      })
-    })
   }
   componentWillMount () {
-    this.rooms()
+    this.setState({
+      rooms: this.props.data
+    })
   }
   render () {
     return (
@@ -29,4 +22,13 @@ export default class extends Component {
       </Layout>
     )
   }
+}
+
+Index.getInitialProps = async function () {
+  const res = await fetch('http://localhost:3000/api/rooms')
+  const data = await res.json()
+
+  console.log(`Show data fetched. Count: ${data.length}`)
+
+  return {data}
 }

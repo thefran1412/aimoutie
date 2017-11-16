@@ -2,22 +2,28 @@ import {Component} from 'react'
 import Room from '../Room/Room'
 
 export default class extends Component {
-/*  constructor (props) {
+  constructor (props) {
     super(props)
-  }*/
-
-  componentWillMount () {
+    this.state = {
+      rooms: []
+    }
   }
-  componentWillReceiveProps () {
-    console.log(this.props.rooms)
+  componentWillMount () {
+    if (this.props.rooms) {
+      console.log(this.props.rooms)
+      this.setState({
+        rooms: this.props.rooms
+      })
+    }
   }
   render () {
     return (
       <div>
-        printing rooms
         {
-          this.props.rooms.map((room) => {
-            <Room info={room} />
+          this.state.rooms.map((room, item) => {
+            return (
+              <Room info={room} key={item} />
+            )
           })
         }
       </div>
